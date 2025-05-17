@@ -1,10 +1,14 @@
 import './App.css'
-
+import Heading from "./components/Heading.jsx"
+import Languages from "./components/Languages.jsx"
+import Word from "./components/Word.jsx"
 function App() {
 
   return (
     <>
-      <h1>Assembly Game</h1>
+      <Heading />
+      <Languages />
+      <Word />
     </>
   )
 }
