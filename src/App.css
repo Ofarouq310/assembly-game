@@ -1,42 +1,84 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  gap: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.languages {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  place-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: 210px;
+  max-width: 350px;
+  
+  li {
+      padding: 2px 5px;
+      margin: 1.5px;
+      border-radius: 2px;
+      font-weight: 400 ;
   }
-  to {
-    transform: rotate(360deg);
+  
+  li:nth-child(1),
+  li:nth-child(2),
+  li:nth-child(5) {
+    background-color: red;
+  }
+
+  li:nth-child(3),
+  li:nth-child(6) {
+    background-color: yellowgreen;
+    color: rgb(61, 61, 61);
+  }
+
+  li:nth-child(4) {
+    background-color: rgb(50, 122, 205);
+    color: rgb(255, 255, 255);
+  }
+
+  li:nth-child(7),
+  li:nth-child(8) {
+    background-color: rgb(176, 39, 176);
+    color: rgb(255, 255, 255); 
+  }
+
+  li:last-child {
+    background-color: rgb(98, 154, 218);
+    color: black;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.word {
+  list-style: none;
+  margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    place-items: center;
+    justify-content: center;
+    padding: 0;
+    min-width: 210px;
+    max-width: 350px;
+
+    li {
+      background-color: aliceblue;
+      width: 50px;  
+      height: 50px;
+    }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
