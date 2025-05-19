@@ -2,13 +2,33 @@ import './App.css'
 import Heading from "./components/Heading.jsx"
 import Languages from "./components/Languages.jsx"
 import Word from "./components/Word.jsx"
+import Alphabet from './components/Alphabet.jsx'
+import { useState } from 'react'
+
 function App() {
+
+  const [word, setWord] = useState("react");
+  const displayWord = Array.from(word, (char) => {
+    return <li key={char}>{char.toUpperCase()}</li>;
+  });
+  
+  const [letterStatus, setLetterStatus] = useState({});
+
+  const handleKeyboardClick = (event) => {
+    const newLetter = event.currentTarget.innerText.toUpperCase();
+
+    setLetterStatus(prev => ({
+      ...prev,
+      [newLetter]: word.toUpperCase().includes(newLetter) ? 'correct' : 'wrong'
+    }));
+  };
 
   return (
     <>
       <Heading />
       <Languages />
-      <Word />
+      <Word word={displayWord} />
+      <Alphabet handleClick={handleKeyboardClick} letterStatus={letterStatus} />
     </>
   )
 }
