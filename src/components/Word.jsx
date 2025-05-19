@@ -1,17 +1,9 @@
-export default function Word (){
+export default function Word (props){
     return (
         <>
             <section>
                 <ul className="word">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                    {props.word}
                 </ul>
             </section>
         </>
