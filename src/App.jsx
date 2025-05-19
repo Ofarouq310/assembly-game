@@ -2,7 +2,7 @@ import './App.css'
 import Heading from "./components/Heading.jsx"
 import Languages from "./components/Languages.jsx"
 import Word from "./components/Word.jsx"
-import Alphabet from './components/Alphabet.jsx'
+import Keyboard from './components/Keyboard.jsx'
 import { useState } from 'react'
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
       <Heading />
       <Languages />
       <Word word={displayWord} />
-      <Alphabet handleClick={handleKeyboardClick} letterStatus={letterStatus} />
+      <Keyboard handleClick={handleKeyboardClick} letterStatus={letterStatus} />
     </>
   )
 }
