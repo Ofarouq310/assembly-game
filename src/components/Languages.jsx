@@ -1,19 +1,29 @@
-export default function Languages () {
+export default function Languages({ wrongCount }) {
+    const languageNames = [
+      "HTML",
+      "CSS",
+      "Javascript",
+      "React",
+      "Typescript",
+      "Node.js",
+      "Python",
+      "Ruby",
+      "Assembly",
+    ];
+  
     return (
-        <>    
-            <section>
-                <ul className="languages">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Javascript</li>
-                    <li>React</li>
-                    <li>Typescript</li>
-                    <li>Node.js</li>
-                    <li>Python</li>
-                    <li>Ruby</li>
-                    <li>Assembly</li>
-                </ul>
-            </section>
-        </>
-    )
-}
+      <section>
+        <ul className="languages">
+          {languageNames.map((name, index) => {
+            const isLost = index < wrongCount;
+            return (
+              <li key={name} className={isLost ? "lost" : ""}>
+                {name}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    );
+  }
+  
