@@ -145,3 +145,37 @@ li {
   
 }
 
+.languages>li.lost {
+  animation: fadeIn 0.5s ease forwards;
+  color: red;
+  /* example styling for lost items */
+  position: relative;
+}
+
+.languages > li.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.849);
+  color: white;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

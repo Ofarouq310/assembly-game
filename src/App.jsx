@@ -7,26 +7,32 @@ import { useState } from 'react'
 
 function App() {
 
-  const [word, setWord] = useState("react");
-  const displayWord = Array.from(word, (char) => {
-    return <li key={char}>{char.toUpperCase()}</li>;
-  });
-  
   const [letterStatus, setLetterStatus] = useState({});
+
+  const [word, setWord] = useState("react");
+  
+  const displayWord = Array.from(word, (char, index) => {
+    return <li key={`${char}-${index}`}>
+           {Object.keys(letterStatus).includes(char.toUpperCase()) ? char.toUpperCase() : " "}
+           </li>;
+  });
+
+  const wordLetters = Array.from(word.toUpperCase());
+  const wrongGuessCount = Object.keys(letterStatus).filter(letter => !wordLetters.includes(letter)).length;
 
   const handleKeyboardClick = (event) => {
     const newLetter = event.currentTarget.innerText.toUpperCase();
-
+    const isCorrect = word.toUpperCase().includes(newLetter)
     setLetterStatus(prev => ({
       ...prev,
-      [newLetter]: word.toUpperCase().includes(newLetter) ? 'correct' : 'wrong'
+      [newLetter]: isCorrect ? 'correct' : 'wrong'
     }));
   };
 
   return (
     <>
       <Heading />
-      <Languages />
+      <Languages wrongCount={wrongGuessCount} />
       <Word word={displayWord} />
       <Keyboard handleClick={handleKeyboardClick} letterStatus={letterStatus} />
     </>
