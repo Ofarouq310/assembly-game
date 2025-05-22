@@ -19,6 +19,7 @@ function App() {
   });
 
   const wordLetters = Array.from(word.toUpperCase());
+
   const wrongGuessCount = Object.keys(letterStatus).filter(letter => !wordLetters.includes(letter)).length;
 
   const handleKeyboardClick = (event) => {
@@ -52,4 +53,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
