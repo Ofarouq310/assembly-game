@@ -113,43 +113,42 @@ li {
 
 .keyboard {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   place-items: center;
   place-content: center;
   max-width: 600px;
   margin: 0 auto;
+  gap: 1rem;
+}
 
-  button {
-    width: 40px;
-    height: 40px;
-    background-color: #FCBA29;
-    color: black;
-    margin: 3px;
-    border: 1px #D7D7D7 solid;
-    border-radius: 4px;
-    font-weight: 600;
-  }
+.keys {
+  width: 40px;
+  height: 40px;
+  background-color: #FCBA29;
+  color: black;
+  margin: 3px;
+  border: 1px #D7D7D7 solid;
+  border-radius: 4px;
+  font-weight: 600;
+}
 
-  button:not(:disabled):hover {
-    cursor: pointer;
-    background-color: #db9d15;
-  }
+.keys:not(:disabled):hover {
+  cursor: pointer;
+  background-color: #db9d15;
+}
 
-  .correct {
-      background-color: #10A95B;
-  }
-  
-  .wrong {
-    background-color: #BA2A2A;
-  }
-  
+.correct {
+  background-color: #10A95B;
+}
+
+.wrong {
+  background-color: #BA2A2A;
 }
 
 .languages>li.lost {
-  animation: fadeIn 0.5s ease forwards;
-  color: red;
-  /* example styling for lost items */
   position: relative;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 .languages > li.lost::before {
@@ -178,4 +177,14 @@ li {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+#new-game-btn {
+  width: 228px;
+  height: 40px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: #11B5E5;
+  color: black;
+  font-weight: 700;
 }

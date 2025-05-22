@@ -3,6 +3,7 @@ import Heading from "./components/Heading.jsx"
 import Languages from "./components/Languages.jsx"
 import Word from "./components/Word.jsx"
 import Keyboard from './components/Keyboard.jsx'
+import languageList from './languages.js'
 import { useState } from 'react'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   });
 
   const wordLetters = Array.from(word.toUpperCase());
+
   const wrongGuessCount = Object.keys(letterStatus).filter(letter => !wordLetters.includes(letter)).length;
 
   const handleKeyboardClick = (event) => {
@@ -29,14 +31,26 @@ function App() {
     }));
   };
 
+  const gameLost = () => {
+    const lost = languageList.length - 1 === wrongGuessCount;   
+    return lost;
+  }
+
+  const gameWon = () => {
+    const won = wordLetters.every(letter => Object.keys(letterStatus).includes(letter))
+    return won;
+  }  
+
+  const gameOver = () => gameWon() || gameLost() ? true : false;
+
   return (
     <>
       <Heading />
       <Languages wrongCount={wrongGuessCount} />
       <Word word={displayWord} />
-      <Keyboard handleClick={handleKeyboardClick} letterStatus={letterStatus} />
+      <Keyboard handleClick={handleKeyboardClick} letterStatus={letterStatus} gameOver={gameOver} />
     </>
   )
 }
 
-export default App
+export default App;

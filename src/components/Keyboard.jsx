@@ -4,16 +4,19 @@ export default function Keyboard(props) {
         <button
             onClick={props.handleClick}
             key={index}
-            className={props.letterStatus[letter.toUpperCase()]} 
+            className={`keys ${props.letterStatus[letter.toUpperCase()]}`} 
             disabled={!!props.letterStatus[letter.toUpperCase()]}
         >
             {letter.toUpperCase()}
-        </button>
+            </button>
     );
-
+    
     return (
         <section className="keyboard">
-            {keyboard}
+            <div>
+                {keyboard}
+            </div>
+             {props.gameOver() && <button id="new-game-btn">New Game</button>}
         </section>
     );
 }
