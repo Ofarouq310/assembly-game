@@ -43,12 +43,16 @@ function App() {
 
   const gameOver = () => gameWon() || gameLost() ? true : false;
 
+  const resetGame = () => {
+    setLetterStatus({});
+  }
+
   return (
     <>
-      <Heading />
+      <Heading gameWon={gameWon} gameLost={gameLost} />
       <Languages wrongCount={wrongGuessCount} />
       <Word word={displayWord} />
-      <Keyboard handleClick={handleKeyboardClick} letterStatus={letterStatus} gameOver={gameOver} />
+      <Keyboard handleClick={handleKeyboardClick} letterStatus={letterStatus} gameOver={gameOver} resetGame={resetGame} />
     </>
   )
 }
