@@ -35,20 +35,24 @@ body {
   flex-direction: column;
 }
 
-.game-won, .game-lost {
+.game-won, .game-lost, .farewell-message {
   background-Color: #10A95B;
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column;
   place-items: center;
   place-content: center;
   font-style: italic;
-  font-size: 20px;
   border-radius: 2px;
 }
 
 .game-lost {
   background-Color: #BA2A2A;
+}
+
+.farewell-message {
+  background-Color: #982aba;
 }
 
 .languages {
