@@ -4,8 +4,8 @@ export default function Keyboard(props) {
         <button
             onClick={props.handleClick}
             key={index}
-            className={`keys ${props.letterStatus[letter.toUpperCase()]}`} 
-            disabled={!!props.letterStatus[letter.toUpperCase()] || props.gameOver()}
+            className={`keys ${props.guessedLetters[letter.toUpperCase()]}`} 
+            disabled={!!props.guessedLetters[letter.toUpperCase()] || props.gameOver}
         >
             {letter.toUpperCase()}
             </button>
@@ -16,7 +16,7 @@ export default function Keyboard(props) {
             <div>
                 {keyboard}
             </div>
-             {props.gameOver() && <button id="new-game-btn" onClick={props.resetGame}>New Game</button>}
+             {props.gameOver && <button id="new-game-btn" onClick={props.resetGame}>New Game</button>}
         </section>
     );
 }
