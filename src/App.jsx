@@ -4,55 +4,53 @@ import Languages from "./components/Languages.jsx"
 import Word from "./components/Word.jsx"
 import Keyboard from './components/Keyboard.jsx'
 import languageList from './languages.js'
+import { randomWord } from './utils.js'
+import words from './words.js'
 import { useState } from 'react'
+
 
 function App() {
 
-  const [letterStatus, setLetterStatus] = useState({});
-
-  const [word, setWord] = useState("react");
+  const [guessedLetters, setGuessedLetters] = useState({});
+  const [word, setWord] = useState( () => randomWord(words));
   
+  const wordLetters = Array.from(word.toUpperCase());
+  
+  const wrongGuessCount = Object.keys(guessedLetters).filter(letter => !wordLetters.includes(letter)).length;
+  
+  const gameLost = languageList.length - 1 === wrongGuessCount;   
+
   const displayWord = Array.from(word, (char, index) => {
     return <li key={`${char}-${index}`}>
-           {Object.keys(letterStatus).includes(char.toUpperCase()) ? char.toUpperCase() : " "}
+           {char.toUpperCase() in guessedLetters || gameLost ? char.toUpperCase() : " "}
            </li>;
   });
-
-  const wordLetters = Array.from(word.toUpperCase());
-
-  const wrongGuessCount = Object.keys(letterStatus).filter(letter => !wordLetters.includes(letter)).length;
 
   const handleKeyboardClick = (event) => {
     const newLetter = event.currentTarget.innerText.toUpperCase();
     const isCorrect = word.toUpperCase().includes(newLetter)
-    setLetterStatus(prev => ({
+    setGuessedLetters(prev => ({
       ...prev,
       [newLetter]: isCorrect ? 'correct' : 'wrong'
     }));
   };
 
-  const gameLost = () => {
-    const lost = languageList.length - 1 === wrongGuessCount;   
-    return lost;
-  }
 
-  const gameWon = () => {
-    const won = wordLetters.every(letter => Object.keys(letterStatus).includes(letter))
-    return won;
-  }  
+  const gameWon = wordLetters.every(letter => Object.keys(guessedLetters).includes(letter));
 
-  const gameOver = () => gameWon() || gameLost() ? true : false;
+  const gameOver = gameWon || gameLost ? true : false;
 
   const resetGame = () => {
-    setLetterStatus({});
+    setGuessedLetters({});
+    setWord(randomWord(words));
   }
 
   return (
     <>
-      <Heading gameWon={gameWon} gameLost={gameLost} />
+      <Heading gameWon={gameWon} gameLost={gameLost} wrongCount={wrongGuessCount} />
       <Languages wrongCount={wrongGuessCount} />
       <Word word={displayWord} />
-      <Keyboard handleClick={handleKeyboardClick} letterStatus={letterStatus} gameOver={gameOver} resetGame={resetGame} />
+      <Keyboard handleClick={handleKeyboardClick} guessedLetters={guessedLetters} gameOver={gameOver} resetGame={resetGame} />
     </>
   )
 }
