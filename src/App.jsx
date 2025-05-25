@@ -7,7 +7,7 @@ import languageList from './languages.js'
 import { randomWord } from './utils.js'
 import words from './words.js'
 import { useState } from 'react'
-
+import Confetti from 'react-confetti';
 
 function App() {
 
@@ -51,6 +51,13 @@ function App() {
       <Languages wrongCount={wrongGuessCount} />
       <Word word={displayWord} />
       <Keyboard handleClick={handleKeyboardClick} guessedLetters={guessedLetters} gameOver={gameOver} resetGame={resetGame} />
+      {
+        gameWon && 
+        <Confetti 
+          recycle={false}
+          numberOfPieces={1000}
+        />
+      }
     </>
   )
 }
