@@ -21,7 +21,7 @@ function App() {
   
   const gameLost = languageList.length - 1 === wrongGuessCount;   
 
-  const [timeLeft, setTimeLeft] = useState(15);
+  const [timeLeft, setTimeLeft] = useState(60);
   
   const [resetCount, setResetCount] = useState(0);
   
