@@ -105,6 +105,13 @@ li {
   place-content: center;
 }
 
+.attempts-timer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
 .word {
   list-style: none;
   margin: 0 auto;
@@ -200,4 +207,15 @@ li {
   background-color: #11B5E5;
   color: black;
   font-weight: 700;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
 }
