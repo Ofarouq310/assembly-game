@@ -49,8 +49,6 @@ function App() {
     );
   });
 
-
-
   useEffect(() => {
       if (gameOver) return; 
     
@@ -75,7 +73,6 @@ function App() {
   }
 
   const attemptsLeft = languageList.length - wrongGuessCount - 1;
-
 
   return (
     <>
