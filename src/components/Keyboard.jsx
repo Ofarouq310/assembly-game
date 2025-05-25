@@ -1,14 +1,22 @@
+import BaffleLetter from "./BaffleLetter";
+
 export default function Keyboard(props) {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-    const keyboard = alphabet.split("").map((letter, index) =>
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const keyboard = alphabet.split("").map((letter) =>
         <button
             onClick={props.handleClick}
-            key={index}
-            className={`keys ${props.guessedLetters[letter.toUpperCase()]}`} 
-            disabled={!!props.guessedLetters[letter.toUpperCase()] || props.gameOver}
+            key={letter}
+            className={`keys ${props.guessedLetters[letter] || ""}`} 
+            disabled={props.guessedLetters[letter] || props.gameOver}
+            aria-disabled={!!props.guessedLetters[letter]}
+            aria-label={`Letter ${letter}`}
         >
-            {letter.toUpperCase()}
-            </button>
+            <BaffleLetter 
+                letter={letter} 
+                revealDelay={500} 
+                resetGame={props.resetCount} 
+            />
+        </button>
     );
     
     return (
@@ -16,7 +24,11 @@ export default function Keyboard(props) {
             <div>
                 {keyboard}
             </div>
-             {props.gameOver && <button id="new-game-btn" onClick={props.resetGame}>New Game</button>}
+            {props.gameOver && (
+                <button id="new-game-btn" onClick={props.resetGame}>
+                    New Game
+                </button>
+            )}
         </section>
     );
 }
