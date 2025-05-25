@@ -29,17 +29,30 @@ body {
 }
 
 .message {
-  background-color: #10A95B;
   width: 100%;
   height: 70px; 
   display: flex;
   flex-direction: column;
+}
+
+.game-won, .game-lost, .farewell-message {
+  background-Color: #10A95B;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
   place-content: center;
-  
-  p {
-    font-style: italic;
-    font-size: 18px;
-  }
+  font-style: italic;
+  border-radius: 2px;
+}
+
+.game-lost {
+  background-Color: #BA2A2A;
+}
+
+.farewell-message {
+  background-Color: #982aba;
 }
 
 .languages {
